@@ -1,0 +1,23 @@
+"https://github.com/powerapps4kids/chess/raw/master/CHESSBOARD.JPG"
+------------------------------------
+"https://github.com/powerapps4kids/chess/raw/master/"
+& ThisItem.ChessPieceColour&ThisItem.ChessPiece &".png"
+-------------------------------
+
+
+Set(gvSourcePosition,ThisItem.Position); //This records where we are
+Set(gvDestinationChessPieceColour,ThisItem.ChessPieceColour);//This says the colour of the piece where we are going
+Set(gvDestinationChessPiece,ThisItem.ChessPiece);//This says the type of piece where we are going
+
+---------------------------------------
+
+Set(gvDestinationPosition,ThisItem.Position)//This is where we are going
+
+----------------------------------------
+
+
+Update( colGameBoard,
+First( Filter( colGameBoard, Position=gvSourcePosition) ), { ChessPiece: "", ChessPieceColour:"",Position:gvSourcePosition } );
+
+Update( colGameBoard,
+First( Filter( colGameBoard, Position=gvDestinationPosition) ), { ChessPiece: gvDestinationChessPiece, ChessPieceColour:gvDestinationChessPieceColour,Position:gvDestinationPosition } );
